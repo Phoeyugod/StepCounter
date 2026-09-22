@@ -6,15 +6,22 @@ async function getAllUsers() {
         },
         body: JSON.stringify({ luid: 2 })
     });
-
-    const users = await response.json();
-
-    drawTable(users);
+    if(response.status !== 200) {
+        const res = await response.json();
+        showMessage('danger', 'ERROR', res.error);
+    } else {
+        const users = await response.json();
+        drawTable(users);
+    }
 }
+   
 function drawTable(users) {
     let usersCount = document.querySelector('#usersCount');
     usersCount.innerHTML = users.length;
-    users.forEach(user, index) => {
+    users.forEach((user, index) => {
         addTableRow(user, index);
     });
+}
+function addTableRow(user, index) {
+
 }
