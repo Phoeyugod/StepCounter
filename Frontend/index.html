@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StepCounter App</title>
+
+    <!-- Styles -->
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+     <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-bs-theme="">
+    <div class="container">
+        <header>
+            <h1>StepCounter App <i class="bi bi-person-walking"></i></h1>
+            <h3>2026.</h3>
+            <div class="themeSwitch">
+              <i class="bi bi-sun-fill" id="lightModeBtn"></i>
+              <i class="bi bi-moon-fill hide" id="darkModeBtn"></i>
+            </div>
+        </header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" onclick="navigate('views/users/Home')">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/Home')">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/login')">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/register')">Registration</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/steps')">My steps</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/profile')">My profile</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/admin/dashboard')">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/admin/users')">Manage users</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#" onclick="navigate('views/users/logout')">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+        <main id="content"></main>
+        <footer>
+            <p class="text-center">Baja SZC Türr István Technikum - 13.a szoftverfejlesztő</p>
+        </footer>
+    </div>
+
+    <!-- scripts -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/app.js"></script>
+    
+    <!-- controllers -->
+    <script src="controllers/userCtrl.js"></script>
+    <script src="controllers/stepCtrl.js"></script>
+    <script src="controllers/adminCtrl.js"></script>
+</body>
+</html>

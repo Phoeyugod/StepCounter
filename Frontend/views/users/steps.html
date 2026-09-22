@@ -1,0 +1,93 @@
+<h3>Steps</h3>
+
+<div class="accordion mb-3" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="row p-3">
+            <div class="col-5">
+                <div class="form-floating mb-3">
+                    <input type="date" class="form-control" id="date" placeholder="">
+                    <label for="date">Date</label>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" id="stepcount" placeholder="">
+                    <label for="stepcount">Stepcount</label>
+                </div>
+            </div>
+                <button type="button" class="btn btn-primary mb-3 col-2">
+                    <i class="bi bi-plus-lg"></i>&nbsp;Add
+                </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="table-tab" data-bs-toggle="tab" data-bs-target="#table-tab-pane" type="button" role="tab" aria-controls="table-tab-pane" aria-selected="true">Tabel view</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="calendar-tab" data-bs-toggle="tab" data-bs-target="#calendar-tab-pane" type="button" role="tab" aria-controls="calendar-tab-pane" aria-selected="false">Calendar view</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-tab-pane" type="button" role="tab" aria-controls="chart-tab-pane" aria-selected="false">Chart view</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active p-3" id="table-tab-pane" role="tabpanel" aria-labelledby="table-tab" tabindex="0">
+    <table class="table table table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+      <th scope="col" class="text-end">Stepcount</th>
+      <th scope="col" class="text-end">Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>20206.09.15</td>
+      <td class="text-end">2.357</td>
+      <td class="text-end">
+        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>2026.09.12</td>
+      <td class="text-end">123456</td>
+      <td class="text-end">
+        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>2026.09.10</td>
+      <td class="text-end">8940</td>
+      <td class="text-end">
+        <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+      </td>
+    </tr>
+    <tr class="tfoot">
+        <td><br></td>
+        <td><strong>Summary:</strong></td>
+        <td class="text-end"><strong>34.563</strong></td>
+        <td><br></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <div class="tab-pane fade" id="calendar-tab-pane" role="tabpanel" aria-labelledby="calendar-tab" tabindex="0">Under construction...</div>
+  <div class="tab-pane fade" id="chart-tab-pane" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">Under construction...</div>
+</div>
