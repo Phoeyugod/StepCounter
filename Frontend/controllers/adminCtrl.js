@@ -24,4 +24,5 @@ function drawTable(users) {
 }
 function addTableRow(user, index) {
 
+    let usersList = document.querySelector('#usersList');
 }
