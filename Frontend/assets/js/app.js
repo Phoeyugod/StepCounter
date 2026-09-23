@@ -14,7 +14,7 @@ async function navigate(page) {
             getAllUsers();
              break;
          }
-     }
+    }
 }
 lightModeBtn.addEventListener('click', () =>{
     let theme = 'ligth';
