@@ -129,8 +129,31 @@ function setMenuItems(param){
 }
 
 async function updateProfile(){
+    let username = document.querySelector('#name');
+    let email = document.querySelector('#email');
 
-    
+    let uid = loadUser() ? loadUser().ID : 0;
+
+    let data = {
+        username: username.value,
+        email: email.value,
+        loggedUserID: uid
+    }
+
+    const response = await fetch(`http://localhost:3000/users/${uid}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    let res = await response.json();
+
+    if(response.status != 200) {
+        showMessage('danger', 'ERROR', res.error);
+    } else {
+        showMessage('success', 'OK', res.message);
+    }
 }
 
 async function updatePasswd(){
@@ -163,4 +186,5 @@ async function updatePasswd(){
         newpass.value = '';
         confirm.value = '';
     }
+
 }
