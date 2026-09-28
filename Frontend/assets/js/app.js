@@ -10,7 +10,7 @@ async function navigate(page) {
    // getAllUsers();
 
      switch(page){
-        case 'admin/users' : {
+        case 'views/admin/users' : {
             getAllUsers();
              break;
          }
@@ -55,3 +55,5 @@ function loadTheme(){
 navigate('views/users/home');
 
 loadTheme();
+
+loginCheck();

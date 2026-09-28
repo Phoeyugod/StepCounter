@@ -46,3 +46,26 @@ p{
 .hide{
     display: none;
 }
+#usersList tr {
+    transition: background-color 0.2s ease;
+}
+
+#usersList tr:hover {
+    background-color: #f1f5f9;
+}
+
+#usersList td {
+    padding: 16px 12px;
+    vertical-align: middle;
+}
+
+#usersList td:first-child {
+    color: #94a3b8;
+    font-weight: bold;
+}
+
+#usersList .form-check-input {
+    width: 2.5em;
+    height: 1.3em;
+    cursor: pointer;
+}
