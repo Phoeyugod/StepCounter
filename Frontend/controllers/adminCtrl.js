@@ -1,7 +1,7 @@
 async function getAllUsers() {
 
     let luid = loadUser() ? loadUser().ID : 0;
-console.log('luid: ', luid);
+
     const response = await fetch('http://localhost:3000/admin/users', {
         method: 'POST',
         headers: {
