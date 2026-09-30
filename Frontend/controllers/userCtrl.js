@@ -186,5 +186,4 @@ async function updatePasswd(){
         newpass.value = '';
         confirm.value = '';
     }
-
 }
