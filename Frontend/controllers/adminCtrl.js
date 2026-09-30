@@ -55,7 +55,8 @@ function addTableRow(user, index) {
  
     let isActive = user.is_active ? 'checked' : '';
  
-    td7.innerHTML = '<div class="form-check form-switch float-end"><input class="form-check-input" type="checkbox" role="switch" id="is_active" ' + isActive + '></div>';
+    let isdisabled = user.ID == loadUser().ID ? 'disabled' : '';
+    td7.innerHTML = '<div class="form-check form-switch float-end"><input class="form-check-input" type="checkbox" role="switch" id="is_active" ' + isActive + ' ' + isdisabled + ' onclick="changeUserStatus(\'' + user.ID + '\')"></div>';
  
     tr.appendChild(td1);
     tr.appendChild(td2);
@@ -66,4 +67,81 @@ function addTableRow(user, index) {
     tr.appendChild(td7);
  
     usersList.appendChild(tr);
+}
+
+async function getStatistics(){
+    let luid = loadUser() ? loadUser().ID : 0;
+
+    const response = await fetch(`http://localhost:3000/admin/statistics`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ luid }),
+    });
+
+    if (response.status != 200){
+        const res = await response.json();
+        showMessage('danger', 'ERROR', res.error);
+    } else {
+        const results = await response.json();   
+        drawDashboard(results);
+    }
+
+}
+
+function drawDashboard(results){
+    let totalSteps = document.querySelector('#totalSteps');
+    let totalKm = document.querySelector('#totalKm');
+    let avgSteps = document.querySelector('#avgSteps');
+    let avgKm = document.querySelector('#avgKm');
+  
+    totalSteps.innerHTML = results[0][0].totalSteps + ' steps';
+    totalKm.innerHTML = '~' + Math.round((results[0][0].totalSteps * 0.7) / 1000) + ' km';
+    avgSteps.innerHTML = results[0][0].averageSteps + ' steps';
+    avgKm.innerHTML = '~' + Math.round((results[0][0].averageSteps * 0.7) / 1000) + ' km';
+
+    let topUsers = document.querySelector('#topUsers');
+
+    results[1].forEach((user, index) => {
+        let km = Math.round((user.steps * 0.7) / 1000);
+        topUsers.innerHTML += `
+        <tr>
+            <td>${index+1}.</td>
+            <td class="text-start">
+            ${user.name} <br> <small>${user.email}</small>
+            </td>
+            <td class="text-end">${user.steps} steps <br> <small>~${km} km</small></td>
+        </tr>`;
+
+    });
+  
+}
+
+async function changeUserStatus(uid) {
+    let luid = loadUser() ? loadUser().ID : 0;
+
+    const data = {
+        luid,
+        uid
+    };
+
+    const response = await fetch(
+        'http://localhost:3000/admin/status',
+        {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+    );
+
+    const res = await response.json();
+
+    if (response.status !== 200) {
+        showMessage('danger', 'ERROR', res.error);
+    } else {
+        showMessage('success', 'SUCCESS', res.message);
+    }
 }

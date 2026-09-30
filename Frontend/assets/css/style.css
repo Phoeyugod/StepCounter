@@ -69,3 +69,17 @@ p{
     height: 1.3em;
     cursor: pointer;
 }
+.summary-row {
+    --bs-table-bg: #212529;
+    --bs-table-color: white;
+    --bs-table-hover-bg: rgba(var(--bs-emphasis-color-rgb), 0.075);
+    --bs-table-hover-color: #ffffff;
+    border-top: 2px solid var(--bs-border-color);
+    font-size: 1.05rem;
+    text-align: left;
+}
+
+.summary-row td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}

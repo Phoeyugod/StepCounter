@@ -4,51 +4,60 @@ let lightModeBtn = document.querySelector('#lightModeBtn');
 let darkModeBtn = document.querySelector('#darkModeBtn');
 
 let theme = 'light';
+
 async function navigate(page) {
+    console.log('Page:', page);
+
     contentBox.innerHTML = await (await fetch(`${page}.html`)).text();
 
-   // getAllUsers();
-
-     switch(page){
-        case 'views/admin/users' : {
+    switch(page) {
+        case 'views/admin/users':
             getAllUsers();
-             break;
-         }
+            break;
+
+        case 'views/admin/dashboard':
+            getStatistics();
+            break;
+        case 'views/users/steps':
+            getUserSteps();
+            break;
     }
 }
-lightModeBtn.addEventListener('click', () =>{
-    let theme = 'ligth';
-    setTheme(theme);
+
+lightModeBtn.addEventListener('click', () => {
+    setTheme('light');
 });
 
 darkModeBtn.addEventListener('click', () => {
-    let theme = 'dark';
-    setTheme(theme);
+    setTheme('dark');
 });
 
-function setTheme(theme){
+function setTheme(theme) {
     document.documentElement.setAttribute('data-bs-theme', theme);
     saveTheme(theme);
     setThemeBtnState();
 }
 
-function setThemeBtnState(){
+function setThemeBtnState() {
     lightModeBtn.classList.toggle('hide');
     darkModeBtn.classList.toggle('hide');
 }
 
-function saveTheme(theme){
+function saveTheme(theme) {
     localStorage.setItem('SCT', theme);
 }
 
-function loadTheme(){
+function loadTheme() {
     theme = 'light';
-    if (localStorage.getItem('SCT')){
+
+    if (localStorage.getItem('SCT')) {
         theme = localStorage.getItem('SCT');
-        if(theme == 'dark'){
+
+        if (theme == 'dark') {
             setThemeBtnState();
         }
     }
+
     setTheme(theme);
 }
 

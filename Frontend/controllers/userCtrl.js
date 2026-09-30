@@ -86,13 +86,13 @@ function clearUser(){
 }
 
 function loginCheck(){
-    if(user = loadUser()){ //két muvelet egyebn 1: ellenorzi, hogy van e user a sessionStorageban 2: ha van akkor visszaadja a user objektumot
-        if(user.role == 'admin'){
-        
-        setMenuItems('admin');
-        navigate('views/admin/dashboard');
+    let user = loadUser();
+
+    if (user) {
+        if (user.role == 'admin') {
+            setMenuItems('admin');
+            navigate('views/admin/dashboard');
         } else {
-           
             setMenuItems('user');
             navigate('views/users/steps');
         }
@@ -153,6 +153,13 @@ async function updateProfile(){
         showMessage('danger', 'ERROR', res.error);
     } else {
         showMessage('success', 'OK', res.message);
+        let user = {
+            ID: uid,
+            name: username.value,
+            email: email.value,
+            role: loadUser().role
+        }
+        storeUser(user);
     }
 }
 

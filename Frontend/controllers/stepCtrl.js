@@ -2,11 +2,6 @@
 async function getUserSteps() {
     let uid = loadUser() ? loadUser().ID : 0;
 
-    if (!uid) {
-        showMessage('danger', 'ERROR', 'You must be logged in!');
-        return;
-    }
-
     const response = await fetch(`http://localhost:3000/steps/${uid}`);
 
     if (response.status !== 200) {
@@ -53,7 +48,7 @@ function drawStepsTable(steps) {
 
         td1.textContent = (index + 1) + '.';
 
-        // Format date as YYYY.MM.DD
+      
         const date = new Date(step.date);
         td2.textContent = date.toLocaleDateString('hu-HU');
 
@@ -79,22 +74,20 @@ td4.innerHTML = `
         stepsList.appendChild(tr);
     });
 
-    // Summary row
+    //osszegzes
     const summary = document.createElement('tr');
-    summary.className = 'table-secondary';
+    summary.className = 'summary-row';
 
     summary.innerHTML = `
-    <td></td>
-    <td class="fw-bold">Summary</td>
-    <td class="text-end fw-bold">
-        ${totalSteps.toLocaleString('hu-HU')}
-    </td>
-    <td></td>
-    `;
+        <td></td>
+        <td class="fw-bold">Summary</td>
+        <td class="text-end fw-bold">
+            ${(totalSteps * 0.7 / 1000)} Km
+        </td>
+        <td></td>
+        `;
 
-    summary.classList.add('summary-row');
-
-    stepsList.appendChild(summary);
+stepsList.appendChild(summary);
 }
 async function deleteStep(stepID) {
 
